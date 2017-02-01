@@ -132,7 +132,7 @@ function getContentPanel(EventObj) {
         ullist.setAttribute('id', 'news-list');
 
         for(var ccy=0;ccy<10;++ccy){
-            var textNode = document.createTextNode(flagString + '>>>>>Wait for ServerSide');
+            var textNode = document.createTextNode(flagString + '>>>>>ServerSide has been building.');
             var hrefNode = document.createElement('a');
             hrefNode.appendChild(textNode);
             var itemsli = document.createElement('li');
