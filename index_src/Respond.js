@@ -10,7 +10,7 @@ function refreshWebPageOnLoadEvent() {
     var allCollectionMsg = StoreManagePort.getCollectionDefinition_array();
 
     //Clear all the animation
-    for(var eleCount=NavigateUL.childElementCount;
+    for(var eleCount = NavigateUL.childElementCount;
             eleCount>0;--eleCount){
         NavigateUL.removeChild(NavigateUL.firstElementChild);
     }
@@ -615,7 +615,7 @@ function generateNewElementFromMsg(MsgObj) {
     var imgblock = document.createElement('img');
     if (MsgObj.webimgSrc == 'None' || MsgObj.webimgSrc == null
         || MsgObj.webimgSrc == ''){
-        imgblock.setAttribute('src', 'websitedata/SymbolicGril.jpg');
+        imgblock.setAttribute('src', 'index_src/SymbolicGril.jpg');
     }else{
         imgblock.setAttribute('src', MsgObj.webimgSrc);
     }

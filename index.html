@@ -5,10 +5,12 @@
     <title>MyNavigate</title>
     <link rel="stylesheet" type="text/css" href="index_src/MyWebsite.css"/>
     <script src="index_src/Respond.js"></script>
+    <script src="index_src/DemandLoading.js"></script>
 </head>
-<body onload="refreshWebPageOnLoadEvent()">
+<body onload="RefreshPageOnLoadEvent()">
 <div class="header">
     <h1>Navigate,我的导航。</h1>
+    <input value="登录" onclick="Call_LoginPanel()" type="button" />
 </div>
 <div class="center">
     <div class="left" >
@@ -40,7 +42,7 @@
             </div>
             <div id="newstab-content">
                 <ul id="news-list">
-                    <li><a href="websitedata/helpContent.html#usehelp">使用说明</a></li>
+                    <li><a href="index_src/helpContent.html#usehelp">使用说明</a></li>
                 </ul>
                 <ul id="custom-tools">
                     <li>
@@ -104,6 +106,15 @@
         <div class="empty"></div>
     </div>
     <div class="empty"></div>
+</div>
+<div class="loginframe" id="loginpanel">
+    <form>
+  		<p>账户名:<input type="text" name="name" id="accountName"></p>
+  		<p>密码:<input type="text" name="password" id="accountPassword"></p>
+		<input type="button" value="登录" onclick="Get_accessCode()"/>
+        <input type="button" value="取消" onclick="Cancel_LoginPanel()"/>
+	</form>
+	<div class="empty"></div>
 </div>
 </body>
 </html>

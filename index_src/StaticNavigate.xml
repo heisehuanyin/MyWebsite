@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root id="rootNode">
+    <li>
+        <a href="http://www.jd.com" target="_blank" collectnum="0" style="animation-delay: 6s;">
+            <img src="http://img.9553.com/uploadfile/2016/1027/20161027053122646.jpg"/>
+        </a>
+        <p>购物</p>
+        <ul>
+            <li>
+                <div>
+                    <a href="http://www.jd.com" target="_blank">
+                        <img src="http://img.9553.com/uploadfile/2016/1027/20161027053122646.jpg"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://www.tmall.com" target="_blank">
+                        <img src="http://image.tupian114.com/20120923/18285581.jpg"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.taobao.com/" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497099980526&amp;di=df7b3021381318b7cea83da6603e4fc2&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F17%2F92%2F71%2F31s58PICy5P_1024.jpg"/>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="http://www.bilibili.com/index.html" target="_blank" collectnum="1" style="animation-delay: 8s;">
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100125059&amp;di=dd2d17cb57921c3d422e6a9bdd227647&amp;imgtype=0&amp;src=http%3A%2F%2Fi.guancha.cn%2Fnews%2F2016%2F10%2F14%2F20161014094935316.jpg"/>
+        </a>
+        <p>视频</p>
+        <ul>
+            <li>
+                <div>
+                    <a href="http://www.bilibili.com/index.html" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100125059&amp;di=dd2d17cb57921c3d422e6a9bdd227647&amp;imgtype=0&amp;src=http%3A%2F%2Fi.guancha.cn%2Fnews%2F2016%2F10%2F14%2F20161014094935316.jpg"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://www.tudou.com/" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100238169&amp;di=59133d03ef712286be803e71e74a90dd&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.cndesign.com%2Fupload%2Fnews%2F20170401%2Fcover%2Ff9f8fb3986fa4f13b4221a38451bf344.png"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://www.youku.com/" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100319893&amp;di=177d76d89a76585facb324c965c34cf0&amp;imgtype=0&amp;src=http%3A%2F%2Fi.gongxiao8.com%2Fmm%2Fuploads%2F0_4170888051x4139683951_23.jpg"/>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="https://www.oschina.net/" target="_blank" collectnum="2" style="animation-delay: 9s;">
+            <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100576017&amp;di=26a10d8c4908f10f7ed4203d4937974a&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.bandenghui.com%2Fmt%2Fdetail%2Fimage%2F20160406%2F1459931107890443.png"/>
+        </a>
+        <p>论坛</p>
+        <ul>
+            <li>
+                <div>
+                    <a href="https://www.oschina.net/" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100576017&amp;di=26a10d8c4908f10f7ed4203d4937974a&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.bandenghui.com%2Fmt%2Fdetail%2Fimage%2F20160406%2F1459931107890443.png"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://bbs.tianya.cn/" target="_blank">
+                        <img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1497100689017&amp;di=da1c4bb37a7ed1160334c678a0009dc8&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.zhicheng.com%2Fuploadfile%2F2016%2F0921%2F20160921011239487.jpg"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://dzh.mop.com/" target="_blank">
+                        <img src="http://i02.pic.sogou.com/68071c52cd45341e"/>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="http://" target="_blank" collectnum="3" style="animation-delay: 3s;">
+            <img src="index_src/SymbolicGril.jpg"/>
+        </a>
+        <p>小说</p>
+        <ul></ul>
+    </li>
+    <li>
+        <a href="http://" target="_blank" collectnum="4" style="animation-delay: 10s;">
+            <img src="index_src/SymbolicGril.jpg"/>
+        </a>
+        <p>问答</p>
+        <ul></ul>
+    </li>
+    <li>
+        <a href="http://" target="_blank" collectnum="5" style="animation-delay: 6s;">
+            <img src="index_src/SymbolicGril.jpg"/>
+        </a>
+        <p>博客</p>
+        <ul></ul>
+    </li>
+    <li>
+        <a href="http://" target="_blank" collectnum="6" style="animation-delay: 9s;">
+            <img src="index_src/SymbolicGril.jpg"/>
+        </a>
+        <p>游戏</p>
+        <ul></ul>
+    </li>
+</root>

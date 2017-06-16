@@ -16,6 +16,18 @@ html {
     padding: 0px;
 }
 
+/* loginframe define*/
+div.loginframe{
+    background: #e01616;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+
 /* web head toparea================================*/
 div.header{
     width:100%;
@@ -129,7 +141,6 @@ ul#navigate-icon >li:hover div {
 
     border-radius: 10px;
 }
-
 
 
 
