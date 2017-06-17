@@ -2,7 +2,10 @@
 
 import cgi
 import os
+import cgitb
 
+
+cgitb.enable()
 
 loginform = cgi.FieldStorage()
 accountName = loginform.getvalue('name', "no_name")
