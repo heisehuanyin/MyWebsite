@@ -68,12 +68,12 @@ if not os.path.exists('CustomNavigate.xml'):
             </li>
         </ul>
     </li></root>'''
-    customxml = open('CustomNavigate.xml', 'w')
+    customxml = open('CustomNavigate.xml', 'w', encoding='utf-8')
     customxml.write(xmlContent)
     customxml.close()
     pass
 
-xmlfile = open('CustomNavigate.xml')
+xmlfile = open('CustomNavigate.xml', encoding='utf-8')
 
 xmlContent = xmlfile.readlines()
 
