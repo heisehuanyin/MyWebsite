@@ -36,8 +36,7 @@ os.chdir('./'+accountName)
 
 # 如果没有该文件就生成一个空白文件
 if not os.path.exists('CustomNavigate.xml'):
-    customxml = open('CustomNavigate.xml', 'w')
-    customxml.write(r'''<?xml version="1.0" encoding="utf-8"?><root id="rootNode"><li>
+    xmlContent= '''<?xml version="1.0" encoding="utf-8"?><root id="rootNode"><li>
         <a href="http://www.jd.com" target="_blank" collectnum="0" style="animation-delay: 6s;">
             <img src="http://img.9553.com/uploadfile/2016/1027/20161027053122646.jpg"/>
         </a>
@@ -61,13 +60,16 @@ if not os.path.exists('CustomNavigate.xml'):
                 </div>
             </li>
         </ul>
-    </li></root>''')
-    customxml.flush()
+    </li></root>'''
+    customxml = open('CustomNavigate.xml', 'w')
+    customxml.write(xmlContent)
     customxml.close()
     pass
 
-xmlContent = open('CustomNavigate.xml')
+xmlfile = open('CustomNavigate.xml')
 
-for line in xmlContent.readlines():
+xmlContent = xmlfile.readlines();
+
+for line in xmlContent:
     print(line)
     pass
