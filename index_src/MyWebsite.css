@@ -28,6 +28,22 @@ div.loginframe{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* web head toparea================================*/
 div.header{
     width:100%;
@@ -38,6 +54,25 @@ div.header h1 {
     color: white;
     font-size: 50px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* web center=================================*/
 div.center {
@@ -237,6 +272,17 @@ ul#custom-tools,ul#custom-tools ul{
     height: 30px;
     margin-left: 50px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

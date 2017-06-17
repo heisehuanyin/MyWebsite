@@ -3,8 +3,11 @@
 import cgi
 import os
 import cgitb
+import codecs, sys
 
 
+
+sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 cgitb.enable()
 
 loginform = cgi.FieldStorage()
@@ -23,6 +26,7 @@ if accessKey == 'no_key':
     exit(0)
 
 if 'CustomNavigate]' not in accessKey:
+    print('accesskey error')
     exit(0)
 
 
@@ -71,7 +75,7 @@ if not os.path.exists('CustomNavigate.xml'):
 
 xmlfile = open('CustomNavigate.xml')
 
-xmlContent = xmlfile.readlines();
+xmlContent = xmlfile.readlines()
 
 for line in xmlContent:
     print(line)
