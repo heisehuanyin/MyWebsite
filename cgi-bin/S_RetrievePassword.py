@@ -12,7 +12,7 @@ from ReplyTool import Reply,Recieve
 import SendEmail
 
 form = cgi.FieldStorage();
-Recieve.checkArgumentsValid(form, ['actName','email']);
+Recieve().checkArgumentsValid(form, ['actName','email']);
 
 accountName = form.getfirst('actName',"");
 emailAddress= form.getfirst('email', "");

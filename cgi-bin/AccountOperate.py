@@ -154,7 +154,7 @@ class AccountTool:
         exeu.execute("select "
                      "email "
                      "from table_useraccount "
-                     "where actName = ?;", (accountName));
+                     "where actName = ?;", [accountName]);
         result = exeu.fetchone();
         if result[0] == emailAddress:
             return True;
@@ -168,7 +168,7 @@ class AccountTool:
         exu.execute("select "
                     "pswd "
                     "from table_useraccount "
-                    "where actName = ? ;", (accountName));
+                    "where actName = ? ;", [accountName]);
         result = exu.fetchone();
         return result[0];
 
