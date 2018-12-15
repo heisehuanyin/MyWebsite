@@ -11,9 +11,9 @@ import AccountTool
     email   : email address
 '''
 
-form = cgi.FieldStorage;
+form = cgi.FieldStorage();
 
-if ('actName' not in form) or ('pswd' not in form) or ('email' not in form):
+if ( "actName" not in form ) or ( "pswd" not in form ) or ( "email" not in form ):
     x = ReplyTool.Reply('anytoken', False, "页面提交信息错误！");
     x.submit();
     exit(0);
