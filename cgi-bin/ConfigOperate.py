@@ -42,6 +42,7 @@ class ConfigManage:
         port.execute("insert into table_configmanage "
                      "(userid, type, content, comment) "
                      "values(?, ?, ?, '暂时无备注');", (actID, type, content));
+        self.__connection.commit();
         pass
 
     def getUserConfig(self, accountName:str, type:str)->(bool, str):
