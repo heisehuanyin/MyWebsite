@@ -127,10 +127,9 @@ class AccountTool:
         self.__connection.commit();
         return token;
 
-
     def checkAccountToken(self, accountName:str, token:str)->bool:
         '''
-        校验账户与token是否相等
+        校验账户与token是否与数据库内值相等
         :param accountName: 账户名
         :param token: token字符串
         :return: 结果True or False
@@ -148,6 +147,30 @@ class AccountTool:
             pass
         else:
             return False;
+
+    def checkAccountEmail(self, accountName:str, emailAddress:str)->bool:
+        exeu = self.__connection.cursor();
+
+        exeu.execute("select "
+                     "email "
+                     "from table_useraccount "
+                     "where actName = ?;", (accountName));
+        result = exeu.fetchone();
+        if result[0] == emailAddress:
+            return True;
+        else:
+            return False;
+        pass
+
+    def getAccountPassword(self, accountName:str )->str:
+        exu = self.__connection.cursor();
+
+        exu.execute("select "
+                    "pswd "
+                    "from table_useraccount "
+                    "where actName = ? ;", (accountName));
+        result = exu.fetchone();
+        return result[0];
 
     def __calcAccountToken(self, user:str) -> str:
         '''
