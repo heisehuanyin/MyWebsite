@@ -3,8 +3,6 @@
 import sqlite3
 import Mw_ComnCfg as cfg
 
-
-
 class AccountTool:
     '''
     通过建立本类实例，构建一个账户操作专用工具，包括：
@@ -99,7 +97,7 @@ class AccountTool:
         :return: 新的token字符串
         '''
         import random;
-        number:float = random.random();
+        number = random.random();
         return user + str(number);
 
 

@@ -8,4 +8,4 @@ fromEmail = 'hongkongaccess@163.com'
 password  = 'hongkongqqoo00p'
 
 # Mw_AccountTool.py
-dataBasePath:str = './file-data/website.db'
+dataBasePath = './file-data/website.db'

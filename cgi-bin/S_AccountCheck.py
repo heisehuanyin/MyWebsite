@@ -3,7 +3,8 @@
 import cgitb,cgi
 import xml.dom
 import Mw_AccountTool
-import Mw_ReplyTool
+import ReplyTool
+
 cgitb.enable();
 
 '''
@@ -14,7 +15,7 @@ cgitb.enable();
 form = cgi.FieldStorage()
 
 if "actName" not in form:
-    x = Mw_ReplyTool.Reply('anytoken', False, "页面提交信息错误！");
+    x = ReplyTool.Reply('anytoken', False, "页面提交信息错误！");
     x.submit();
     exit(0);
     pass
@@ -24,10 +25,10 @@ accountName = form.getfirst("actName", "");
 atool = Mw_AccountTool.AccountTool();
 result,string = atool.checkAccountExists(accountName);
 if not result:
-    x = Mw_ReplyTool.Reply('anytoken', True, string);
+    x = ReplyTool.Reply('anytoken', True, string);
     x.submit();
     exit(0);
     pass
 
-x = Mw_ReplyTool.Reply('anytoken', False, string);
+x = ReplyTool.Reply('anytoken', False, string);
 x.submit();
