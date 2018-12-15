@@ -90,6 +90,65 @@ class AccountTool:
         self.__connection.commit();
         return token;
 
+    def checkAccountPassword(self, accountName:str, password:str)->(bool, int):
+        '''
+        校对账户名称与账户密码，如果账户密码与数据库相等，则返回True,账户id
+        :param accountName: 账户名称
+        :param password: 账户密码
+        :return: 结果,账户id
+        '''
+        exu = self.__connection.cursor();
+
+        exu.execute("select "
+                    "pswd, "
+                    "id "
+                    "from table_useraccount "
+                    "where actName = ?", [accountName]);
+        result = exu.fetchone();
+        if password == result[0]:
+            return (True, result[1]);
+        else:
+            return (False, -1);
+
+    def refreshAccountToken(self, accountName:str)->str:
+        '''
+        刷新账户中的token，并返回新token
+        :param accountName: 账户名
+        :return: 新token
+        '''
+        token = self.__calcAccountToken(accountName);
+        exu = self.__connection.cursor();
+
+        exu.execute('update table_useraccount '
+                    'set '
+                    'token = ?, '
+                    'where actName = ? ;', [token, accountName]);
+
+        self.__connection.commit();
+        return token;
+
+
+    def checkAccountToken(self, accountName:str, token:str)->bool:
+        '''
+        校验账户与token是否相等
+        :param accountName: 账户名
+        :param token: token字符串
+        :return: 结果True or False
+        '''
+
+        exu = self.__connection.cursor();
+
+        exu.execute("select "
+                    "token "
+                    "from table_useraccount "
+                    "where actName = ?", [accountName]);
+        result = exu.fetchone();
+        if result[0] == token:
+            return True;
+            pass
+        else:
+            return False;
+
     def __calcAccountToken(self, user:str) -> str:
         '''
         传入账户名称，计算新的token字符串，但是仅仅是计算，并不会刷新数据库

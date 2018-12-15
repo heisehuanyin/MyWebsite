@@ -7,5 +7,5 @@ serverAddress = "smtp.163.com"
 fromEmail = 'hongkongaccess@163.com'
 password  = 'hongkongqqoo00p'
 
-# AccountTool.py
+# AccountOperate.py
 dataBasePath = './file-data/website.db'

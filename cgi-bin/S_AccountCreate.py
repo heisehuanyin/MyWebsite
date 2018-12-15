@@ -2,7 +2,7 @@
 
 import cgitb,cgi
 import ReplyTool
-import AccountTool
+import AccountOperate
 
 '''
 本模块用于提供创建账户服务，该服务对外提供接口，输入需要包含以下键值：
@@ -25,7 +25,7 @@ password = form.getfirst('pswd', "");
 email = form.getfirst('email', '');
 
 
-tool = AccountTool.AccountTool();
+tool = AccountOperate.AccountTool();
 
 result, String = tool.checkAccountExists(accountName);
 if result:

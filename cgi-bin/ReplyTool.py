@@ -84,6 +84,22 @@ class Reply:
         sys.stdout.flush();
         pass
 
-if __name__=="__main__":
-    r = Reply('asdkfjasdf', True, "operate success");
-    r.submit();
+class Recieve:
+    def checkArgumentsValid(self, fieldStorage:{}, itemList:[]) -> bool:
+        '''
+        校验给定的fieldStorage中是否存在itemList中的任一项：
+        不存在则结束程序，并回复错误；
+        存在则返回True
+        :param itemList: 指定字符串列表
+        :param fieldStorage: 校验目标
+        :return: 结果
+        '''
+        for item in itemList:
+            if item not in fieldStorage:
+                x = Reply('anytoken', False, "页面提交信息错误！");
+                x.submit();
+                exit(0);
+                pass
+            pass
+
+        return True;

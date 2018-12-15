@@ -2,7 +2,7 @@
 
 import cgitb,cgi
 import xml.dom
-import AccountTool
+import AccountOperate
 import ReplyTool
 
 cgitb.enable();
@@ -22,7 +22,7 @@ if "actName" not in form:
 
 accountName = form.getfirst("actName", "");
 
-atool = AccountTool.AccountTool();
+atool = AccountOperate.AccountTool();
 result,string = atool.checkAccountExists(accountName);
 if not result:
     x = ReplyTool.Reply('anytoken', True, string);
