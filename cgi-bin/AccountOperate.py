@@ -29,16 +29,6 @@ class AccountTool:
                     "token text, "
                     "comment text "
                     ");");
-        exc.execute("create table if not exists table_configmanage("
-                    "id integer primary key autoincrement, "
-                    "userid integer, "
-                    "type text, "
-                    "content text, "
-                    "comment text, "
-                    "constraint cm_ua foreign key(userid) "
-                    "    references table_useraccount(id) "
-                    "    on delete cascade "
-                    ");");
         exc.execute("create table if not exists table_discussmanage("
                     "id integer primary key autoincrement, "
                     "url text, "
@@ -171,6 +161,17 @@ class AccountTool:
                     "where actName = ? ;", [accountName]);
         result = exu.fetchone();
         return result[0];
+
+    def getAccountIDWithName(self, accountName:str)->int:
+        exe = self.__connection.cursor();
+
+        exe.execute("select "
+                    "id "
+                    "from table_useraccount "
+                    "where actName = ?;", [accountName]);
+        result = exe.fetchone();
+        return result[0];
+
 
     def __calcAccountToken(self, user:str) -> str:
         '''
