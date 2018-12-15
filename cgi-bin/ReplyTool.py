@@ -44,8 +44,8 @@ class Reply:
         token.setAttribute('token', tokenStr);
         top_elm.appendChild(token);
 
-        content = self.__doc.createElement('content');
-        top_elm.appendChild(content);
+        self.__content = self.__doc.createElement('content');
+        top_elm.appendChild(self.__content);
         pass
 
 
@@ -62,8 +62,7 @@ class Reply:
         :param domNode:
         :return: 无
         '''
-        domNode = self.__doc.getElementsByTagName('content')[0];
-        domNode.appendChild(domNode);
+        self.__content.appendChild(domNode);
 
     def toString(self) -> str:
         '''
