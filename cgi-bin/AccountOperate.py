@@ -121,8 +121,8 @@ class AccountTool:
 
         exu.execute('update table_useraccount '
                     'set '
-                    'token = ?, '
-                    'where actName = ? ;', [token, accountName]);
+                    'token = ? '
+                    'where actName = ? ;', (token, accountName));
 
         self.__connection.commit();
         return token;
