@@ -110,7 +110,8 @@
 <td>autoincrement
 </td>
 
-<tr><td>ActName<td>账户名<td>text
+<tr><td>actName
+<td>账户名<td>text
 <td>
 <td>保证唯一
 </td>
