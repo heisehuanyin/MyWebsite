@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import cgitb,cgi
+import cgi
 import ReplyTool
 import AccountOperate
 
@@ -12,12 +12,7 @@ import AccountOperate
 '''
 
 form = cgi.FieldStorage();
-
-if ( "actName" not in form ) or ( "pswd" not in form ) or ( "email" not in form ):
-    x = ReplyTool.Reply('anytoken', False, "页面提交信息错误！");
-    x.submit();
-    exit(0);
-    pass
+ReplyTool.Recieve().checkArgumentsValid(form, ['actName', 'pswd', 'email']);
 
 
 accountName = form.getfirst("actName", "");

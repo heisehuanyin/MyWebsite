@@ -95,7 +95,7 @@ class Recieve:
         '''
         for item in itemList:
             if item not in fieldStorage:
-                x = Reply('anytoken', False, "页面提交信息错误！");
+                x = Reply('anytoken', False, "页面提交信息错误，缺少：" + item + " !");
                 x.submit();
                 exit(0);
                 pass

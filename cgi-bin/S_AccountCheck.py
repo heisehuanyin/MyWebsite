@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
-import cgitb,cgi
-import xml.dom
+import cgi
 import AccountOperate
 import ReplyTool
 
-cgitb.enable();
 
 '''
 本模块定义了一项服务，“检测账户是否已经存在”，具有回复功能
@@ -13,12 +11,7 @@ cgitb.enable();
 '''
 
 form = cgi.FieldStorage()
-
-if "actName" not in form:
-    x = ReplyTool.Reply('anytoken', False, "页面提交信息错误！");
-    x.submit();
-    exit(0);
-    pass
+ReplyTool.Recieve().checkArgumentsValid(form,['actName']);
 
 accountName = form.getfirst("actName", "");
 
