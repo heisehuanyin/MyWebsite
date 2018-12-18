@@ -77,7 +77,7 @@ export namespace Ajax {
         }
 
         private ajaxOperateFailed(jqxhr, status, errorMSG){
-            console.log('ajax请求错误=》'+ status + errorMSG)
+            console.log('ajax请求出错:status('+ status +")"+ errorMSG);
         }
     }
 }
