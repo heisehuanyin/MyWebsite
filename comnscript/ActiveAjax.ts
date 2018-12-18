@@ -20,7 +20,7 @@ export namespace Ajax {
         public getData(): { [key: string]: string } { return this._data; };
     }
 
-    export class Respond {
+    export class Reply {
         private _result: JQuery;
 
         constructor(result:JQuery<HTMLElement>) {
@@ -52,13 +52,18 @@ export namespace Ajax {
         }
     }
 
+    export interface Task{
+        execute(reply:Reply):void;
+        errorRespond():void;
+    }
+
     export class Port{
-        public resolve:(respond:Respond)=>void;
+        public resolve:Task;
         private url:string;
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, reciever:(respond:Respond)=>void ):void {
+        public postRequest(req: Request, reciever:Task ):void {
             this.resolve = reciever;
 
             $.ajax({
@@ -71,15 +76,16 @@ export namespace Ajax {
         }
 
         private processServerResponds(data:any):void{
-            var x:Respond = new Respond($(data));
+            var x:Reply = new Reply($(data));
 
             console.log(x);
             console.log(this.resolve);
-            this.resolve(x);
+            this.resolve.execute(x);
         }
 
         private ajaxOperateFailed(jqxhr, status, errorMSG){
             console.log('ajax请求出错:status('+ status +")"+ errorMSG);
+            this.resolve.errorRespond();
         }
     }
 }
