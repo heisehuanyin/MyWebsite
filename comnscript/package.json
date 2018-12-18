@@ -4,7 +4,7 @@
   "description": "",
   "main": "ContentResponds.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && webpack "
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,8 @@
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.27"
+    "@types/jquery": "^3.3.27",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
   }
 }

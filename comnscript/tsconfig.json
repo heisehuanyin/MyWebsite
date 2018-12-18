@@ -1,0 +1,11 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es3",
+        "outDir": "jstemp"
+    },
+    "files": [
+        "ContentResponds.ts"
+    ]
+}
