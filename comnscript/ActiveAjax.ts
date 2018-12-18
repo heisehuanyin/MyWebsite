@@ -2,7 +2,9 @@ import { } from 'jquery'
 
 export namespace Ajax {
     export class Request {
-        private _data: { [key: string]: string };
+        private _data: { [key: string]: string; } = {
+            "t" : 'no'
+        };
 
         constructor(actName: string, token: string) {
             this._data['actName'] = actName;
