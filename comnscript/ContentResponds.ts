@@ -1,11 +1,20 @@
-import { StorageAccess, StorageType } from './BrowserStorage';
+import { Store } from './BrowserStorage';
 import { Ajax } from './ActiveAjax';
 import $ = require('jquery')
 
 $(document).ready(() => {
+    var access = new Store.Access(Store.Type.Local);
+    var actName = access.getValue('actName');
+    var token = access.getValue('token');
+    
+    if(actName == null || token == null){
+        actName = 'anyOne';
+        token = 'anyToken';
+    }
+
     var port = new Ajax.Port('cgi-bin/S_AccountCheck.py');
-    var req = new Ajax.Request('act', 'anytoken');
-    port.postRequest(req, new MyTask());
+    var req = new Ajax.Request(actName, token);
+    port.postRequest(req, [new MyTask()]);
 });
 
 class MyTask implements Ajax.Task {

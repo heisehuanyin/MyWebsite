@@ -58,13 +58,13 @@ export namespace Ajax {
     }
 
     export class Port{
-        public resolve:Task;
+        public resolve:Task[];
         private url:string;
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, reciever:Task ):void {
-            this.resolve = reciever;
+        public postRequest(req: Request, reciever:Task[] ):void {
+            this.resolve.concat(reciever);
 
             $.ajax({
                 method:'POST',
@@ -80,12 +80,18 @@ export namespace Ajax {
 
             console.log(x);
             console.log(this.resolve);
-            this.resolve.execute(x);
+            
+            for (var item in this.resolve){
+                this.resolve[item].execute(x);
+            }
         }
 
         private ajaxOperateFailed(jqxhr, status, errorMSG){
             console.log('ajax请求出错:status('+ status +")"+ errorMSG);
-            this.resolve.errorRespond();
+            
+            for (var item in this.resolve){
+                this.resolve[item].errorRespond();
+            }
         }
     }
 }
