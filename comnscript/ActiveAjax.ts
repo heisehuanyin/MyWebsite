@@ -53,7 +53,7 @@ export namespace Ajax {
     }
 
     export class Port {
-        private resolve:(respond:Respond)=>void;
+        public resolve:(respond:Respond)=>void;
         private url:string;
 
         constructor(url:string) { this.url = url;}
@@ -65,7 +65,7 @@ export namespace Ajax {
                 method:'POST',
                 url:this.url,
                 data:req.getData(),
-                success:this.processServerResponds,
+                success:this.processServerResponds.bind(this),
                 error:this.ajaxOperateFailed
             });
         }
