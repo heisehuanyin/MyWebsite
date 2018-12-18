@@ -71,7 +71,7 @@ export namespace Ajax {
         }
 
         private processServerResponds(data:any):void{
-            var x:Respond = new Respond(jQuery(data));
+            var x:Respond = new Respond($(data));
 
             this.recieve(x);
         }
