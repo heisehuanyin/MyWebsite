@@ -1,4 +1,4 @@
-import { } from 'jquery'
+import $ = require("jquery")
 
 export namespace Ajax {
     export class Request {
