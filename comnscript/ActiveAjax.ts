@@ -65,7 +65,6 @@ export namespace Ajax {
 
         public postRequest(req: Request, tasks:Task[] ):void {
             this.resolve = this.resolve.concat(tasks);
-            console.log(this.resolve);
 
             $.ajax({
                 method:'POST',
@@ -81,7 +80,6 @@ export namespace Ajax {
 
             for (var item in this.resolve){
                 this.resolve[item].execute(x);
-                console.log(item);
             }
         }
 

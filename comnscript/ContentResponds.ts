@@ -14,7 +14,7 @@ $(document).ready(() => {
 
     var port = new Ajax.Port('cgi-bin/S_AccountCheck.py');
     var req = new Ajax.Request(actName, token);
-    port.postRequest(req, [new MyTask()]);
+    port.postRequest(req, [new MyTask(), new RefreshToken()]);
 });
 
 class MyTask implements Ajax.Task {
@@ -24,4 +24,12 @@ class MyTask implements Ajax.Task {
     errorRespond() {
 
     }
+}
+
+class RefreshToken implements Ajax.Task{
+    execute(data:Ajax.Reply){
+        var port = new Store.Access(Store.Type.Local);
+        port.setValue('token', data.newToken());
+    }
+    errorRespond(){}
 }
