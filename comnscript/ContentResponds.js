@@ -55,6 +55,7 @@ function AjaxPort(url_string){
     }
 
     this._success = (data, states, msg) => {
+        console.log(data)
         var x = new ajaxRespond($(data));
         this.method_work(x);
     }
@@ -63,11 +64,14 @@ function AjaxPort(url_string){
 
 //自动生成的数据，包含返回数据
 function ajaxRespond(data_JQuery){
-    this.data = data_JQuery;
-
+    this.data = data_JQuery 
+    
     this.result_bool = () => {
         var temp = this.data;
-        var resultNode = temp.filter('result').first();
+        var resultNode = temp.find('result').first();
+        console.log("==========>>>>>>>>>>>>>>>")
+        console.log(resultNode);
+
         if (resultNode.attr('value') == 'True')
             return true;
         else
@@ -76,17 +80,17 @@ function ajaxRespond(data_JQuery){
 
     this.reason_string = () => {
         var temp = this.data;
-        var reasonNode = temp.filter('reason').first();
-        return reasonNode.prop('innerHTML');
+        var reasonNode = temp.find('reason').first();
+        return reasonNode.text();
     }
 
     this.newToken_string = () => {
-        var tokenNode = this.data.filter('token').first();
+        var tokenNode = this.data.find('token').first();
         return tokenNode.attr('token');
     }
 
     this.xmlContent_JQuery = () => {
-        return this.data.filter('content').first();
+        return this.data.find('content').first();
     }
     this.textContent_string = () => {
         return this.xmlContent_JQuery.prop('innerHTML');
@@ -127,5 +131,5 @@ $(document).ready(
 function recieve(respd){
 
         alert(respd.result_bool() + ":" + respd.reason_string());
-        alert("====================");
+        alert("newToken:"+respd.newToken_string());
 }
