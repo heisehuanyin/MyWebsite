@@ -68,11 +68,11 @@ function AjaxPort(url_string){
         var x = $(data);
         this.ajaxRespond = new ajaxRespond(x);
 
-        this.workState = 1;
+        this.workState = 1000;
     }
 
     this._error = () => {
-        this.workState = 1;
+        this.workState = 1000;
     }
 
 }
@@ -137,7 +137,7 @@ $(document).ready(
         var ajaxp = new AjaxPort('cgi-bin/S_AccountCheck.py');
         var req = new ajaxRequest('pla', 'anyToken');
         var respd = ajaxp.postRequest_ajaxRespond(req);
-        alert(respd.result_bool + ":" + respd.reason_string);
+        alert(respd.result_bool() + ":" + respd.reason_string());
         alert("====================");
     }
 );
