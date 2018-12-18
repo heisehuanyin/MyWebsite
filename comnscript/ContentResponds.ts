@@ -9,5 +9,5 @@ $(document).ready(() => {
 });
 
 function recieve(data: Ajax.Respond): void {
-    alert('ajax is success.');
+    alert('Account is empty? ' + data.result() + "\nnewToken" + data.newToken())
 }
