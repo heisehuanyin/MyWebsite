@@ -58,7 +58,7 @@ export namespace Ajax {
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, recieve: (respond:Respond)=>void ):void {
+        public postRequest(req: Request, recieve:(respond:Respond)=>void ):void {
             this.recieve = recieve;
 
             $.ajax({
@@ -73,6 +73,8 @@ export namespace Ajax {
         private processServerResponds(data:any):void{
             var x:Respond = new Respond($(data));
 
+            console.log(x);
+            console.log(this.recieve);
             this.recieve(x);
         }
 
