@@ -58,7 +58,7 @@ export namespace Ajax {
     }
 
     export class Port{
-        public resolve:Task[];
+        public resolve:Array<Task> = new Array<Task>();
         private url:string;
 
         constructor(url:string) { this.url = url;}
