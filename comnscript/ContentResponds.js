@@ -37,42 +37,26 @@ var StorageType = {
 //创建一个接口，用于与服务器进行Ajax交互，配置规定格式数据源，自动格式化==================================================
 function AjaxPort(url_string){
     this.port_url = url_string;
+    this.method_work = 0;
 
-    this.ajaxRespond = 0;
+    this.postRequest = (req_ajaxRequest, recieve_method_ajaxRespond_) => {
+        this.method_work = recieve_method_ajaxRespond_;
 
-    //=0表示人物未开始，<0表示服务器未回复，>0表示处理结束
-    this.workState = 0;
-
-    this.postRequest_ajaxRespond = (req_ajaxRequest) => {
-        this.workState = -1;
-
-        $.ajax({
-            method : "POST",
-            url: this.port_url,
-            data: req_ajaxRequest.postData,
-            success: this._success,
-            error:this._error
-        })
-        while(this.workState < 0){
-            setTimeout(()=>{
-                console.log('等待服务器数据..........')
-            }, 50)
-            this.workState--;
-        }
+        var datax = {};
+        datax.method = "POST";
+        datax.url = this.port_url;
+        datax.data = req_ajaxRequest.postData;
+        datax.success = this._success;
+        console.log(datax);
+        $.ajax(datax);
 
         this.workState = 0;
         return this.ajaxRespond;
     }
 
-    this._success = (data) => {
-        var x = $(data);
-        this.ajaxRespond = new ajaxRespond(x);
-
-        this.workState = 1000;
-    }
-
-    this._error = () => {
-        this.workState = 1000;
+    this._success = (data, states, msg) => {
+        var x = new ajaxRespond($(data));
+        this.method_work(x);
     }
 
 }
@@ -113,8 +97,8 @@ function ajaxRespond(data_JQuery){
 function ajaxRequest(actName_string, token_string){
 
     this.postData = {
-        actName:actName_string,
-        token:token_string
+        "actName":actName_string,
+        "token":token_string
     }
 
     this.appendArgs_void = (key_string, value_string) => {
@@ -131,13 +115,17 @@ function ajaxRequest(actName_string, token_string){
     }
 }
 
-
+//code for work======================================================================================================
 $(document).ready(
     () => {
         var ajaxp = new AjaxPort('cgi-bin/S_AccountCheck.py');
         var req = new ajaxRequest('pla', 'anyToken');
-        var respd = ajaxp.postRequest_ajaxRespond(req);
-        alert(respd.result_bool() + ":" + respd.reason_string());
-        alert("====================");
+        var respd = ajaxp.postRequest(req, recieve);
     }
 );
+
+function recieve(respd){
+
+        alert(respd.result_bool() + ":" + respd.reason_string());
+        alert("====================");
+}
