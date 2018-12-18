@@ -53,13 +53,13 @@ export namespace Ajax {
     }
 
     export class Port {
-        private recieve:(respond:Respond)=>void;
+        private resolve:(respond:Respond)=>void;
         private url:string;
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, recieve:(respond:Respond)=>void ):void {
-            this.recieve = recieve;
+        public postRequest(req: Request, reciever:(respond:Respond)=>void ):void {
+            this.resolve = reciever;
 
             $.ajax({
                 method:'POST',
@@ -74,8 +74,8 @@ export namespace Ajax {
             var x:Respond = new Respond($(data));
 
             console.log(x);
-            console.log(this.recieve);
-            this.recieve(x);
+            console.log(this.resolve);
+            this.resolve(x);
         }
 
         private ajaxOperateFailed(jqxhr, status, errorMSG){
