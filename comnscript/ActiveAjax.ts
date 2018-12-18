@@ -58,13 +58,13 @@ export namespace Ajax {
     }
 
     export class Port{
-        public resolve:Array<Task> = new Array<Task>();
+        private resolve:Array<Task> = new Array<Task>();
         private url:string;
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, reciever:Task[] ):void {
-            this.resolve.concat(reciever);
+        public postRequest(req: Request, tasks:Task[] ):void {
+            this.resolve = this.resolve.concat(tasks);
             console.log(this.resolve);
 
             $.ajax({
