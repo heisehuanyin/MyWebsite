@@ -52,14 +52,18 @@ export namespace Ajax {
         }
     }
 
+    export interface Task{
+        processRespond(args:Respond):void;
+    }
+
     export class Port {
-        private resolve:(respond:Respond)=>void;
+        private resolver:Task;
         private url:string;
 
         constructor(url:string) { this.url = url;}
 
-        public postRequest(req: Request, reciever:(respond:Respond)=>void ):void {
-            this.resolve = reciever;
+        public postRequest(req: Request, reciever:Task ):void {
+            this.resolver = reciever;
 
             $.ajax({
                 method:'POST',
@@ -74,8 +78,8 @@ export namespace Ajax {
             var x:Respond = new Respond($(data));
 
             console.log(x);
-            console.log(this.resolve);
-            this.resolve(x);
+            console.log(this.resolver);
+            this.resolver.processRespond(x);
         }
 
         private ajaxOperateFailed(jqxhr, status, errorMSG){
