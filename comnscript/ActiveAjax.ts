@@ -54,7 +54,7 @@ export namespace Ajax {
 
     export interface Task{
         execute(reply:Reply):void;
-        errorRespond():void;
+        errorRespond(url:string):void;
     }
 
     export class Port{
@@ -87,7 +87,7 @@ export namespace Ajax {
             console.log('ajax请求出错:status('+ status +")"+ errorMSG);
             
             for (var item in this.resolve){
-                this.resolve[item].errorRespond();
+                this.resolve[item].errorRespond(this.url);
             }
         }
     }

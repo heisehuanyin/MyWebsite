@@ -21,9 +21,7 @@ class MyTask implements Ajax.Task {
     execute(data: Ajax.Reply) {
         alert('Account is empty? ' + data.result() + "\nnewToken = " + data.newToken())
     }
-    errorRespond() {
-
-    }
+    errorRespond(url:string) {}
 }
 
 class RefreshToken implements Ajax.Task{
@@ -31,5 +29,5 @@ class RefreshToken implements Ajax.Task{
         var port = new Store.Access(Store.Type.Local);
         port.setValue('token', data.newToken());
     }
-    errorRespond(){}
+    errorRespond(url:string){}
 }
