@@ -69,7 +69,7 @@ class Reply:
         转换本回复为字符串
         :return: Reply的文本表示
         '''
-        return self.__doc.documentElement.toxml();
+        return self.__doc.toxml();
 
     def submit(self):
         '''
