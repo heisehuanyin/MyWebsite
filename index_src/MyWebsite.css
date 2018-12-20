@@ -1,11 +1,10 @@
-/* body global===================================== */
+/* body global======================================================= */
 * {
     margin: 0px;
     padding: 0px;
     border: 0px;
 }
-
-html {
+html{
     background-color: #f3f3f3;
 }
 
@@ -16,8 +15,8 @@ html {
     padding: 0px;
 }
 
-/* loginframe define*/
-div.loginframe{
+/* loginframe define==================================================*/
+.loginframe{
     background: #e01616;
     position: fixed;
     width: 100%;
@@ -31,265 +30,112 @@ div.loginframe{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* web head toparea================================*/
-div.header{
+/* web head toparea====================================================*/
+.header{
     width:100%;
     height: 160px;
     background: #689ada;
 }
-div.header h1 {
+.header h1 {
     color: white;
     font-size: 50px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* web center=================================*/
-div.center {
+/* web body=============================================================*/
+.body {
     width: 80%;
-    margin: auto;
     right: 0px;
     left: 0px;
     background-color: white;
+    margin: auto;
 }
 
-
-
-
-
-
-
-div.center .left {
-    width: 200px;
+.body .left {
     float: left;
+    width: 202px;
+    background-color: whitesmoke;
 }
-div.center .left >ul {
+
+.body .right {
+    float: left;
+    width: calc(100% - 203px);
+}
+/*body left==================*/
+ul.navigate {
     list-style: none;
     text-align: center;
 }
-ul#navigate-icon >li {
+ul.navigate li {
     position: relative;
-    width: 200px;
-    height: 100px;
-    margin: 3px;
+    width: 202px;
+    height: 102px;
+    border: thin dotted rgba(128, 128, 128, 0.281);
 }
 @keyframes fanzhuan {
     0%{
         transform: rotateX(0deg);
     }
-    25%{
-        transform: rotateX(0deg);
-    }
     50%{
         transform: rotateX(180deg);
-    }
-    75%{
-        transform: rotateX(360deg);
     }
     100%{
         transform: rotateX(360deg);
     }
 }
-ul#navigate-icon >li >a {
-    display: block;
-    width: 100%;
-    height: 100px;
-    background-color: #689ada;
-    font-size: 40px;
-    color: white;
-    border-color: #689ada;
-    border-radius: 10px;
-    position: absolute;
 
+ul.navigate img{
+    display: block;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    border-width: 1px;
+    border: thin inset black;
+}
+
+ul.navigate p {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.356);
+}
+ul.navigate a{
+    float: left;
+    width: 202px;
+    height: 102px;
+}
+ul.navigate >li >a{
+    position: absolute;
+    left: 0px;
+    top: 0px;
     animation-name: fanzhuan;
-    animation-duration: 8s;
+    animation-duration: 6s;
     animation-iteration-count: infinite;
 }
-ul#navigate-icon img{
-    width: 100%;
-    height: 100px;
-    border-color: #689ada;
-    border-radius: 10px;
- }
- ul#navigate-icon >li >p {
-    display: block;
-    width: 100%;
-    height: 100px;
-    font-size: 40px;
-    color: #000;
-    padding-top: 25px;
-}
-ul#navigate-icon >li ul{
+ul.navigate div{
     display: none;
 }
-ul#navigate-icon >li:hover ul{
-    display: block;
-    list-style: none;
-    position: absolute;
-    left: 200px;
+ul.navigate li:hover div{
     top: 0px;
+    display: block;
+    position: absolute;
     width: 1000px;
+    margin-left: 202px;
 }
-ul#navigate-icon >li:hover li a ,ul#navigate-icon >li:hover li img{
-    display: block;
-    font-size: 40px;
-    width: 200px;
-    height: 100px;
-}
-ul#navigate-icon >li:hover div {
-    display: inline;
-    float: left;
-    background-color: #cfe9f1;
-    margin: 2px;
-    width: 200px;
-    height: 100px;
-
-    border-radius: 10px;
-}
-
-
-
-
-
-
-div.center .right {
-    width: calc(100% - 207px);
-    float: left;
-    margin-left: 7px;
-}
-
-div#newstab-header-area {
-    background-color: chartreuse;
-    text-align: center;
-}
-ul#newstab-header {
-    list-style: none;
-    padding-left: 10px;
-}
-ul#newstab-header li{
-    float: left;
-    background-color: chartreuse;
-}
-ul#newstab-header li:hover {
-    background-color: #62bc00;
-}
-ul#newstab-header a{
-    display: block;
-    padding: 5px;
-    font-size: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-
-
-
-
-
-div#newstab-content {
-    clear: both;
-}
-div#newstab-content >ul {
+/*body right==============*/
+.body .right >ul {
     list-style: none;
 }
-
-ul#news-list li{
-    display: block;
-    width: auto;
-    height: 105px;
-    margin-bottom: 3px;
-    box-shadow: 4px 4px 2px #bdbdbd;
-    background-color: #9279c9;
-}
-ul#custom-tools,ul#custom-tools ul{
-    list-style: none;
-}
-#custom-tools h2{
-    display: block;
-    width: auto;
-    height: 100px;
-    border-radius: 8px;
-    border-width: 1px;
-    background-color: #bdbdbd;
-    margin-bottom: 4px;
-}
-#custom-tools h1{
-    width: calc(100% - 200px);
-    height: 50px;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    background-color: #e6e6e6;
-    float: left;
-    margin-left: 50px;
-}
-#custom-tools a{
-    width: auto;
-    float: right;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 17px;
-    padding-bottom: 17px;
-
-    border-radius: 8px;
-    margin-bottom: 4px;
-    background-color: #e6e6e6;
-}
-#custom-tools a:hover {
-    background-color: #cecece;
-}
-#custom-tools input{
-    width: calc(100% - 50px);
+.body .right .tabbar{
     height: 30px;
-    margin-left: 50px;
+    background-color: green;
+    padding-left: 7px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.body .right .tabbar li{
+    display: inline;
+    font-size: 19px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 
 /* web footer=======================================*/
