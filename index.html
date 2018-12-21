@@ -11,7 +11,32 @@
 <body>
     <div class="header">
         <h1>Navigate,我的导航。</h1>
-        <input value="登录" type="button" />
+        <input id="accessBtn" value="登录" type="button" />
+    </div>
+    <div class="loginframe" data-show="no">
+        <form id="form-1" data-front="yes">
+            <fieldset>
+                <legend>填写登录信息</legend>
+                <p><label for="actName">账户：<input type="text" name="actName"/></label></p>
+                <p><label for="pswd">密码：<input type="password" name="pswd"/></label></p>
+                <input type="button" value="注册账户" data-for="change"/>
+                <input type="button" value="找回账户" />
+                <input type="button" value="登录账户" data-for="action"/>
+            </fieldset>
+        </form>
+        <form id="form-2" data-front="no">
+            <fieldset>
+                <legend>填写注册信息</legend>
+                <p><label for="actName">账户：<input name="actName" type="text" /></label></p>
+                <p><label for="pswd">密码：<input type="password" name="pswd" /></label></p>
+                <p><label for="email">邮箱：<input type="text" name="email" /></label></p>
+                <input type="button" value="返回登录" data-for="change"/>
+                <input type="button" value="找回账户" />
+                <input type="button" value="注册账户" data-for="action"/>
+            </fieldset>
+        </form>
+        <p id="msg-out"> </p>
+        <div class="empty"></div>
     </div>
     <div class="body">
         <ul class="left navigate">
@@ -129,16 +154,16 @@
                     <li>
                         <p class="title">Navigate Type</p>
                         <div>
-                            <a href="xxxx.html" >
-                                <img src="sdfaf.png" />
+                            <a href="pages/error.html" >
+                                <img src="image/SymbolicGril.jpg" />
                             </a>
                         </div>
                     </li>
                     <li>
                         <p class="title">Navigate Type</p>
                         <div>
-                            <a href="xxxx.html" >
-                                <img src="sdfaf.png" />
+                            <a href="pages/error.html" >
+                                <img src="image/SymbolicGril.jpg" />
                             </a>
                         </div>
                     </li>
@@ -204,15 +229,6 @@
             <a target="_blank" href="./websitedata/helpContent.html">点此查询帮助文档，查看导航网页使用说明并开发计划。</a>
             <div class="empty"></div>
         </div>
-        <div class="empty"></div>
-    </div>
-    <div class="loginframe" id="loginpanel">
-        <form>
-            <p>账户名:<input type="text" name="name" id="accountName"></p>
-            <p>密码:<input type="text" name="password" id="accountPassword"></p>
-            <input type="button" value="登录" />
-            <input type="button" value="取消" />
-        </form>
         <div class="empty"></div>
     </div>
 </body>

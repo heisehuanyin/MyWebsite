@@ -40,7 +40,8 @@ export namespace Store{
             }
         }
         /**
-         * 
+         * 删除存储中的指定键值对
+         * @param key 指定键
          */
         public removeValue(key:string){
             if(this._type == Type.Local)
@@ -167,7 +168,6 @@ export namespace Store{
                 rtn += "[" + item + "]" + this.data[item] + ";";
             }
             rtn += "}";
-
             return rtn;
         }
 
