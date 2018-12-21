@@ -127,7 +127,7 @@ function checkAccount(){
 
 class PrintLoginLog implements Ajax.Task{
     execute(res:Ajax.Reply){
-        $('#msg-out').text(res.reason);
+        $('#msg-out').text(res.reason());
     }
     errorRespond(){}
 }
