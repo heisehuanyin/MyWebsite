@@ -1,6 +1,10 @@
 import { Store } from './BrowserStorage';
 import { Ajax } from './ActiveAjax';
-import { RefreshToken, AccountResult, AccountMsg} from './ComnTask'
+import { 
+    RefreshToken, 
+    AccountResult, 
+    AccountMsg, 
+    PageRender} from './ComnTask'
 import $ = require('jquery')
 
 $(document).ready(() => {
@@ -24,60 +28,21 @@ $(document).ready(() => {
     
     if(actName == null || token == null){
         actName = 'anyOne';
-        token = 'anyToken';
+        token = 'anytoken';
     }
 
 
-    //获取综合数据到目前页面
-    //成功
-        //从本地缓存中获取数据+返回数据对当前页面的导航图标进行重新排版
-        //向服务器发送综合数据,服务器保存该数据
-        //向服务器发送请求获取自定义的配置
-        //利用自定义配置对页面进行重新渲染
-    //失败
-        //删除本地浏览器缓存数据
+    var request = new Ajax.Request(actName, token);
+    request.appendArgs('type','NavigateData');
+    var port = new Ajax.Port('cgi-bin/S_4ConfigDownload.py');
 
+    port.postRequest(request, [new RefreshToken(),
+                            new PageRender(actName, token)]);
 
+    //TODO: 向服务器发送请求获取自定义的配置
+    //TODO: 利用自定义配置对页面进行重新渲染
 
 });
-
-class GetConfigData implements Ajax.Task{
-    execute(respond:Ajax.Reply){
-        if(! respond.result()){
-            return;
-        }
-
-        var reply = respond.textContent();
-        var cfgData = new Store.NavData();
-        cfgData.parseString(reply);
-
-        var task = new NavigateIconRender(cfgData);
-        task.do();
-    }
-    errorRespond(url){
-        console.log(url+ ':服务器链接错误.........');
-    }
-}
-
-class NavigateIconRender {
-    private data:Store.NavData = new Store.NavData();
-
-    constructor(external?: Store.NavData){
-        var port = new Store.Access(Store.Type.Local);
-        this.data = port.getNavDataFormLocalStorage();
-
-        if(external != null)
-            this.data.mergeNavData(external);
-    }
-
-    public do(){
-        var linkdata = this.data.getInData();
-        
-    }
-}
-
-
-
 
 
 
