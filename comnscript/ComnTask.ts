@@ -61,7 +61,6 @@ export class NavDataUpload implements Ajax.Task{
 
     execute(reply:Ajax.Reply){
         var replyStr = reply.textContent();
-        console.log(reply);
         var cfgData = new Store.Access(Store.Type.Local)
             .getNavDataFormLocalStorage();
             var x = new Store.NavData();
@@ -129,7 +128,6 @@ class HotAccessEdit {
 
     public do(){
         var linkdata = this.data.getInData();
-        console.log(linkdata);
 
         var targetNode = $('.right .iconSet').first();
 
