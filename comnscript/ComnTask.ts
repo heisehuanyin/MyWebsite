@@ -17,3 +17,23 @@ export class RefreshToken implements Ajax.Task{
     errorRespond(url:string){}
 }
 
+
+export class PrintLoginLog implements Ajax.Task{
+    execute(res:Ajax.Reply){
+        $('#msg-out').text(res.reason());
+    }
+    errorRespond(){}
+}
+
+export class DisplayResult implements Ajax.Task{
+    execute(req:Ajax.Reply){
+        if(!req.result()){
+            alert(req.reason());
+            return;
+        }
+        alert('您的账户创建成功！');
+        $('#accessBtn').trigger('click');
+    }
+
+    errorRespond(url:string){}
+}

@@ -1,6 +1,6 @@
 import { Store } from './BrowserStorage';
 import { Ajax } from './ActiveAjax';
-import { RefreshToken, MyTask} from './ComnTask'
+import { RefreshToken, MyTask, DisplayResult,PrintLoginLog} from './ComnTask'
 import $ = require('jquery')
 
 $(document).ready(() => {
@@ -113,7 +113,14 @@ function changeFrontForm(){
 }
 
 function signinProcess(){
-
+    var req = new Ajax.Request(
+        String($('#form-1 input[name=actName]').val()),
+        'anytoken');
+        req.appendArgs('pswd', String($('#form-1 input[name=pswd]').val()));
+    
+    var port = new Ajax.Port('cgi-bin/S_AccountLogin.py');
+    port.postRequest(req, [new RefreshToken(),
+        new LoginProcess()]);
 }
 
 function singupProcess(){
@@ -129,21 +136,6 @@ function singupProcess(){
     port.postRequest(req, [new RefreshToken(),
         new DisplayResult()]);
 }
-
-class DisplayResult implements Ajax.Task{
-    execute(req:Ajax.Reply){
-        if(!req.result()){
-            alert(req.reason());
-            return;
-        }
-        alert('您的账户创建成功！');
-        $('#accessBtn').trigger('click');
-    }
-
-    errorRespond(url:string){}
-}
-
-
 function checkAccount(){
     var port = new Ajax.Port('cgi-bin/S_AccountCheck.py');
     var actName = String($(this).val())
@@ -153,9 +145,13 @@ function checkAccount(){
     port.postRequest(request, [new PrintLoginLog()]);
 }
 
-class PrintLoginLog implements Ajax.Task{
-    execute(res:Ajax.Reply){
-        $('#msg-out').text(res.reason());
+class LoginProcess implements Ajax.Task{
+    execute(req:Ajax.Reply){
+        if(!req.result()){
+            alert(req.reason());
+            return;
+        }
+        alert('登录成功');
     }
-    errorRespond(){}
+    errorRespond(url){}
 }
