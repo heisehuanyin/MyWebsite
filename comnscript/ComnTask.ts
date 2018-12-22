@@ -2,13 +2,6 @@ import {Ajax} from './ActiveAjax'
 import {Store} from './BrowserStorage'
 import $ = require('jquery')
 
-export class MyTask implements Ajax.Task {
-    execute(data: Ajax.Reply) {
-        alert('Account is empty? ' + data.result() + "\nnewToken = " + data.newToken())
-    }
-    errorRespond(url:string) {}
-}
-
 export class RefreshToken implements Ajax.Task{
     execute(data:Ajax.Reply){
         var port = new Store.Access(Store.Type.Local);
@@ -18,20 +11,28 @@ export class RefreshToken implements Ajax.Task{
 }
 
 
-export class PrintLoginLog implements Ajax.Task{
+export class AccountMsg implements Ajax.Task{
     execute(res:Ajax.Reply){
         $('#msg-out').text(res.reason());
     }
     errorRespond(){}
 }
 
-export class DisplayResult implements Ajax.Task{
+export class AccountResult implements Ajax.Task{
+    private actName:string='';
+    
+    constructor(actName:string){
+        this.actName = actName;
+    }
+
     execute(req:Ajax.Reply){
         if(!req.result()){
             alert(req.reason());
             return;
         }
-        alert('您的账户创建成功！');
+        var access = new Store.Access(Store.Type.Local);
+        access.setValue('actName', this.actName);
+        alert(req.reason());
         $('#accessBtn').trigger('click');
     }
 

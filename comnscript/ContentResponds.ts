@@ -1,6 +1,6 @@
 import { Store } from './BrowserStorage';
 import { Ajax } from './ActiveAjax';
-import { RefreshToken, MyTask, DisplayResult,PrintLoginLog} from './ComnTask'
+import { RefreshToken, AccountResult, AccountMsg} from './ComnTask'
 import $ = require('jquery')
 
 $(document).ready(() => {
@@ -113,20 +113,18 @@ function changeFrontForm(){
 }
 
 function signinProcess(){
-    var req = new Ajax.Request(
-        String($('#form-1 input[name=actName]').val()),
-        'anytoken');
+    var actName = String($('#form-1 input[name=actName]').val());
+    var req = new Ajax.Request(actName,'anytoken');
         req.appendArgs('pswd', String($('#form-1 input[name=pswd]').val()));
     
     var port = new Ajax.Port('cgi-bin/S_AccountLogin.py');
     port.postRequest(req, [new RefreshToken(),
-        new LoginProcess()]);
+        new AccountResult(actName)]);
 }
 
 function singupProcess(){
-    var req = new Ajax.Request(
-        String($('#form-2 [name=actName]').first().val()),
-        'anytoken');
+    var actName = String($('#form-2 [name=actName]').first().val());
+    var req = new Ajax.Request(actName,'anytoken');
         req.appendArgs('pswd', 
             String($('#form-2 [name=pswd]').first().val()));
         req.appendArgs('email', 
@@ -134,24 +132,12 @@ function singupProcess(){
         
     var port = new Ajax.Port('cgi-bin/S_AccountCreate.py');
     port.postRequest(req, [new RefreshToken(),
-        new DisplayResult()]);
+        new AccountResult(actName)]);
 }
 function checkAccount(){
     var port = new Ajax.Port('cgi-bin/S_AccountCheck.py');
     var actName = String($(this).val())
 
     var request = new Ajax.Request(actName,'anytoken');
-    
-    port.postRequest(request, [new PrintLoginLog()]);
-}
-
-class LoginProcess implements Ajax.Task{
-    execute(req:Ajax.Reply){
-        if(!req.result()){
-            alert(req.reason());
-            return;
-        }
-        alert('登录成功');
-    }
-    errorRespond(url){}
+    port.postRequest(request, [new AccountMsg()]);
 }
