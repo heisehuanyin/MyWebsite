@@ -38,7 +38,7 @@ $(document).ready(() => {
     var port = new Ajax.Port('cgi-bin/S_4ConfigDownload.py');
 
     port.postRequest(request, [new RefreshToken(),
-                            new NavDataUpload(actName, token),
+            //new NavDataUpload(actName, token)
                             new PageRender()]);
 
     //TODO: 向服务器发送请求获取自定义的配置
