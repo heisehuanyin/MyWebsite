@@ -48,7 +48,9 @@ export class AccountResult implements Ajax.Task{
     errorRespond(url:string){}
 }
 /**
- * 将用户浏览数据进行上传
+ * 将用户浏览数据进行上传,本操作需要放在任务链最后面
+ * @warnning 本操作会向服务器发送数据，因此会更新token
+ * @warnning 数据发送成功将清除本地浏览数据
  */
 export class NavDataUpload implements Ajax.Task{
     private act:string;
@@ -69,7 +71,8 @@ export class NavDataUpload implements Ajax.Task{
         request.appendArgs('type', 'NavigateData');
         request.appendArgs('content', cfgData.toString());
         var port = new Ajax.Port('cgi-bin/S_4ConfigUpload.py');
-        port.postRequest(request, [new RefreshToken()]);
+        port.postRequest(request, [new RefreshToken(),
+                new ClearNavData()]);
     }
     errorRespond(url){}
 }
@@ -93,6 +96,20 @@ export class PageRender implements Ajax.Task{
     errorRespond(url){
         console.log(url+ ':服务器链接错误.........');
     }
+}
+/**
+ * 清空本地NavigateData存储，慎用
+ * @warnning 将清空本次存储数据，慎用
+ */
+class ClearNavData implements Ajax.Task{
+    execute(reply:Ajax.Reply){
+        if(!reply.result()){
+            return;
+        }
+        var accport = new Store.Access(Store.Type.Local);
+        accport.clearNaviDataAtLocalStorage();
+    }
+    errorRespond(url:string){}
 }
 
 /**

@@ -39,7 +39,7 @@ $(document).ready(() => {
 
     port.postRequest(request, [new RefreshToken(),//刷新token字串
         new PageRender(),//仅利用数据
-        new NavDataUpload(actName)//发送本地数据，刷新token
+        new NavDataUpload(actName)//发送本地数据，刷新token,清除数据
     ]);
 
     //TODO: 向服务器发送请求获取自定义的配置
