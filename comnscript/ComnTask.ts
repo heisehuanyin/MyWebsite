@@ -60,11 +60,12 @@ export class NavDataUpload implements Ajax.Task{
     }
 
     execute(reply:Ajax.Reply){
-
         var replyStr = reply.textContent();
         var cfgData = new Store.Access(Store.Type.Local)
             .getNavDataFormLocalStorage();
-        cfgData.parseString(replyStr);
+            var x = new Store.NavData();
+            x.parseString(replyStr);
+        cfgData.mergeNavData(x);
 
         var request = new Ajax.Request(this.act, 
             reply.newToken());
@@ -89,7 +90,9 @@ export class PageRender implements Ajax.Task{
         var replyStr = reply.textContent();
         var cfgData = new Store.Access(Store.Type.Local)
             .getNavDataFormLocalStorage();
-        cfgData.parseString(replyStr);
+            var x = new Store.NavData();
+            x.parseString(replyStr);
+        cfgData.mergeNavData(x);
 
         new HotAccessEdit(cfgData).do();
     }
@@ -124,6 +127,7 @@ class HotAccessEdit {
 
     public do(){
         var linkdata = this.data.getInData();
+        console.log(linkdata);
 
         var targetNode = $('.right .iconSet').first();
         //targetNode.remove('li');
