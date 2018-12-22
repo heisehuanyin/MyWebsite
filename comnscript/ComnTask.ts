@@ -63,6 +63,7 @@ export class PageRender implements Ajax.Task{
     }
 
     execute(reply:Ajax.Reply){
+        console.log(reply);
         if(! reply.result()){
             return;
         }
