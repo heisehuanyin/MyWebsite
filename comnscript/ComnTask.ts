@@ -47,13 +47,10 @@ export class AccountResult implements Ajax.Task{
 
     errorRespond(url:string){}
 }
-
-
 /**
- * 设计用来进行页面的总体渲染任务，
- * 也掌管渲染数据的上传任务
+ * 将用户浏览数据进行上传
  */
-export class PageRender implements Ajax.Task{
+export class NavDataUpload implements Ajax.Task{
     private act:string;
     private token:string;
 
@@ -62,11 +59,7 @@ export class PageRender implements Ajax.Task{
         this.token = token;
     }
 
-    execute(reply:Ajax.Reply){
-        console.log(reply);
-        if(! reply.result()){
-            return;
-        }
+    execute(reply){
         var replyStr = reply.textContent();
         var cfgData = new Store.Access(Store.Type.Local)
             .getNavDataFormLocalStorage();
@@ -77,6 +70,24 @@ export class PageRender implements Ajax.Task{
         request.appendArgs('content', cfgData.toString());
         var port = new Ajax.Port('cgi-bin/S_4ConfigUpload.py');
         port.postRequest(request, [new RefreshToken()]);
+    }
+    errorRespond(url){}
+}
+/**
+ * 设计用来进行页面的总体渲染任务，
+ * 也掌管渲染数据的上传任务
+ */
+export class PageRender implements Ajax.Task{
+    execute(reply:Ajax.Reply){
+        console.log(reply);
+        if(! reply.result()){
+            return;
+        }
+
+        var replyStr = reply.textContent();
+        var cfgData = new Store.Access(Store.Type.Local)
+            .getNavDataFormLocalStorage();
+        cfgData.parseString(replyStr);
 
         new HotAccessEdit(cfgData).do();
     }

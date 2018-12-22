@@ -4,7 +4,8 @@ import {
     RefreshToken, 
     AccountResult, 
     AccountMsg, 
-    PageRender} from './ComnTask'
+    PageRender,
+    NavDataUpload} from './ComnTask'
 import $ = require('jquery')
 
 $(document).ready(() => {
@@ -37,7 +38,8 @@ $(document).ready(() => {
     var port = new Ajax.Port('cgi-bin/S_4ConfigDownload.py');
 
     port.postRequest(request, [new RefreshToken(),
-                            new PageRender(actName, token)]);
+                            new NavDataUpload(actName, token),
+                            new PageRender()]);
 
     //TODO: 向服务器发送请求获取自定义的配置
     //TODO: 利用自定义配置对页面进行重新渲染
