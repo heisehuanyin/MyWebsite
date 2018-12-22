@@ -37,9 +37,10 @@ $(document).ready(() => {
     request.appendArgs('type','NavigateData');
     var port = new Ajax.Port('cgi-bin/S_4ConfigDownload.py');
 
-    port.postRequest(request, [new RefreshToken(),
-            //new NavDataUpload(actName, token)
-                            new PageRender()]);
+    port.postRequest(request, [new RefreshToken(),//刷新token字串
+        new PageRender(),//仅利用数据
+        new NavDataUpload(actName)//发送本地数据，刷新token
+    ]);
 
     //TODO: 向服务器发送请求获取自定义的配置
     //TODO: 利用自定义配置对页面进行重新渲染

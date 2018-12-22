@@ -52,23 +52,20 @@ export class AccountResult implements Ajax.Task{
  */
 export class NavDataUpload implements Ajax.Task{
     private act:string;
-    private token:string;
 
-    constructor(actName:string, token:string){
+    constructor(actName:string){
         this.act = actName;
-        this.token = token;
     }
 
     execute(reply:Ajax.Reply){
-        console.log(reply);
-        console.log("actName:"+ this.act + "\ntoken" + this.token);
 
         var replyStr = reply.textContent();
         var cfgData = new Store.Access(Store.Type.Local)
             .getNavDataFormLocalStorage();
         cfgData.parseString(replyStr);
 
-        var request = new Ajax.Request(this.act, this.token);
+        var request = new Ajax.Request(this.act, 
+            reply.newToken());
         request.appendArgs('type', 'NavigateData');
         request.appendArgs('content', cfgData.toString());
         var port = new Ajax.Port('cgi-bin/S_4ConfigUpload.py');
