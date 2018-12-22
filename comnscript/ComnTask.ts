@@ -66,13 +66,12 @@ export class NavDataUpload implements Ajax.Task{
             var x = new Store.NavData();
             x.parseString(replyStr);
         cfgData.mergeNavData(x);
-        console.log(cfgData);
 
         var request = new Ajax.Request(this.act, 
             reply.newToken());
         request.appendArgs('type', 'NavigateData');
         request.appendArgs('content', cfgData.toString());
-        console.log(cfgData.toString());
+        console.log(request);
 
         var port = new Ajax.Port('cgi-bin/S_4ConfigUpload.py');
         port.postRequest(request, [new RefreshToken(),
