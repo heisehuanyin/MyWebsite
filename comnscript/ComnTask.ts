@@ -124,12 +124,11 @@ class HotAccessEdit {
 
     public do(){
         var linkdata = this.data.getInData();
-        console.log(linkdata);
 
         var targetNode = $('.right .iconSet').first();
         //targetNode.remove('li');
 
-        $('.navigate >li').each(()=>{
+        $('.navigate >li').each(function(){
             console.log($(this));
         })
         
