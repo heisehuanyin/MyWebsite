@@ -150,7 +150,7 @@ export namespace Store{
          * @param formateStr 本类型生成的格式组成的字符串
          */
         public parseString(formateStr:string):void{
-            var xlist = formateStr.split(';');
+            var xlist = formateStr.split('：');
             this.data = {}
             
             for(var item in xlist){
@@ -165,7 +165,7 @@ export namespace Store{
         public toString():string{
             var rtn:string = '{';
             for(var item in this.data){
-                rtn += "[" + item + "]" + this.data[item] + ";";
+                rtn += "[" + item + "]" + this.data[item] + "：";
             }
             rtn += "}";
             return rtn;
