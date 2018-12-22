@@ -8,6 +8,8 @@ $(document).ready(() => {
     $('#accessBtn').on('click', loginAccess);
     $('.loginframe input[data-for=change]').on('click', changeFrontForm);
     $('.loginframe input[name=actName]').on('keyup', checkAccount);
+    $('#signin').on('click', signinProcess);
+    $('#signup').on('click', singupProcess);
 
     //为页面所有的Icon上添加回调，记录所有点击数目，记录在浏览器本地存储中
     $('a').on({
@@ -114,7 +116,33 @@ function signinProcess(){
 
 }
 
-function singupProcess(){}
+function singupProcess(){
+    var req = new Ajax.Request(
+        String($('#form-2 [name=actName]').first().val()),
+        'anytoken');
+        req.appendArgs('pswd', 
+            String($('#form-2 [name=pswd]').first().val()));
+        req.appendArgs('email', 
+            String($('#form-2 [name=email]').first().val()));
+        
+    var port = new Ajax.Port('cgi-bin/S_AccountCreate.py');
+    port.postRequest(req, [new RefreshToken(),
+        new DisplayResult()]);
+}
+
+class DisplayResult implements Ajax.Task{
+    execute(req:Ajax.Reply){
+        if(!req.result()){
+            alert(req.reason());
+            return;
+        }
+        alert('您的账户创建成功！');
+        $('#accessBtn').trigger('click');
+    }
+
+    errorRespond(url:string){}
+}
+
 
 function checkAccount(){
     var port = new Ajax.Port('cgi-bin/S_AccountCheck.py');
