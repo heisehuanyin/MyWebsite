@@ -4,7 +4,7 @@
   "description": "",
   "main": "ContentResponds.js",
   "scripts": {
-    "build": "tsc && webpack "
+    "build": "tsc && webpack"
   },
   "author": "",
   "license": "ISC",
@@ -12,8 +12,9 @@
     "jquery": "^3.3.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.27",
-    "webpack": "^4.27.1",
+    "@types/jquery": "^3.3.28",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2"
   }
 }
