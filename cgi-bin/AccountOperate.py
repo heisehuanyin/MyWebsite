@@ -95,7 +95,7 @@ class AccountTool:
                     "from table_useraccount "
                     "where actName = ?", [accountName]);
         result = exu.fetchone();
-        if password == result[0]:
+        if (result is not None) and password == result[0]:
             return (True, result[1]);
         else:
             return (False, -1);
@@ -132,7 +132,7 @@ class AccountTool:
                     "from table_useraccount "
                     "where actName = ?", [accountName]);
         result = exu.fetchone();
-        if result[0] == token:
+        if (result is not None) and (result[0] == token):
             return True;
             pass
         else:
@@ -146,7 +146,7 @@ class AccountTool:
                      "from table_useraccount "
                      "where actName = ?;", [accountName]);
         result = exeu.fetchone();
-        if result[0] == emailAddress:
+        if (result is not None)and(result[0] == emailAddress):
             return True;
         else:
             return False;
